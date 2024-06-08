@@ -127,48 +127,49 @@ button {
 .floating-video {
   position: absolute;
   top: 50%;
-  bottom: 20%;
-  right: 0%;
-  left: 0%;
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
+  width: 80%; /* Initial width for larger screens */
+  height: 45%; /* Maintain aspect ratio */
 }
 
-.floating-video video {
+.floating-video iframe {
+  width: 100%;
   height: 100%;
-  padding: 20px;
-  margin-top: 50px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .floating-video {
-    right: 15%;
-    left: 15%;
+    width: 70%;
   }
 }
 
 @media (max-width: 992px) {
   .floating-video {
-    right: 10%;
-    left: 10%;
+    top: 20%;
+    left: 50%;
+    width: 100%;
+    height: 33%;
   }
 }
 
 @media (max-width: 768px) {
   .floating-video {
-    right: 5%;
-    left: 5%;
+    top: 25%;
+    left: 50%;
+    width: 100%;
+    height: 45%;
   }
 }
 
 @media (max-width: 576px) {
   .floating-video {
-    right: 2%;
-    left: 2%;
+    top: 25%;
+    left: 50%;
+    width: 100%;
+    height: 45%;
   }
 }
 

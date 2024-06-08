@@ -23194,14 +23194,12 @@ label {
 .fancynavbar-brand-img {
     opacity: 1 !important
 }
-.fancynavbar-brand-img {
-    width: 2px;
-}
 
 /* Logo size for tablets and larger devices */
-@media (min-width: 768px) {
+@media (min-width: 268px) {
     .fancynavbar-brand-img {
-        width: 20px; /* Adjust the size as needed */
+        
+        width: 15px; /* Adjust the size as needed */
     }
 }
 
