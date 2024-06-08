@@ -123,3 +123,55 @@ button {
 }
 
 
+/* Video services webtoon */
+.floating-video {
+  position: absolute;
+  top: 50%;
+  bottom: 20%;
+  right: 0%;
+  left: 0%;
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.floating-video video {
+  height: 100%;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .floating-video {
+    right: 15%;
+    left: 15%;
+  }
+}
+
+@media (max-width: 992px) {
+  .floating-video {
+    right: 10%;
+    left: 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-video {
+    right: 5%;
+    left: 5%;
+  }
+}
+
+@media (max-width: 576px) {
+  .floating-video {
+    right: 2%;
+    left: 2%;
+  }
+}
+
+
+
+

@@ -282,7 +282,7 @@ h1,
 
     h1,
     .h1 {
-        font-size: .157rem
+        font-size: 2.157rem
     }
 }
 
@@ -670,7 +670,7 @@ progress {
 
 @media(min-width: 1200px) {
     .lead {
-        font-size: 1.333rem
+        font-size: 0.5rem
     }
 }
 
@@ -11076,7 +11076,7 @@ fieldset:disabled .btn {
 }
 
 .fs-7 {
-    font-size: 1.777rem !important
+    font-size: 1.5rem !important
 }
 
 .fs-6 {
@@ -22554,7 +22554,7 @@ html[dir=rtl] .googlemap .gm-style-iw.gm-style-iw-c button[title=Close] {
 }
 
 .lead {
-    font-size: 1.333rem;
+    font-size: 1.2rem;
     font-weight: 400
 }
 
@@ -23194,6 +23194,24 @@ label {
 .fancynavbar-brand-img {
     opacity: 1 !important
 }
+.fancynavbar-brand-img {
+    width: 2px;
+}
+
+/* Logo size for tablets and larger devices */
+@media (min-width: 768px) {
+    .fancynavbar-brand-img {
+        width: 20px; /* Adjust the size as needed */
+    }
+}
+
+/* Logo size for desktops and larger devices */
+@media (min-width: 1024px) {
+    .fancynavbar-brand-img {
+        width: 30px; /* Adjust the size as needed */
+    }
+}
+
 
 .fancynavbar-toggler {
     cursor: pointer;
