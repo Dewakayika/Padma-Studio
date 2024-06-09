@@ -16278,6 +16278,9 @@ fieldset:disabled .btn {
     .min-vh-lg-50 {
         min-height: 50vh !important
     }
+    .min-vh-lg-65 {
+        min-height: 65vh !important
+    }
 
     .min-vh-lg-75 {
         min-height: 75vh !important

@@ -537,7 +537,7 @@
 							</div>
 						</div>
 						<div class="col-lg-4">
-							<div class="row flex-center py-6 py-md-8">
+							<div class="row flex-center py-6 py-md-8 video-tittle">
 								<div class="col-11 col-sm-10">
 									<div class="overflow-hidden">
 										<h2
@@ -744,14 +744,58 @@
 							</div>
 						</div>
 
+
+
+						<!-- Slider Img -->
 						<div class="col-sm-8 col-lg-4 mt-4 mt-lg-0 px-lg-4">
-							<img
+							<div class="swiper theme-slider swiper-theme"
+							data-swiper='{"autoplay":{"delay":5000,"disableOnInteraction":false},"loop":true,"effect":"fade","pagination":{"el":".swiper-pagination","clickable":true,"type":"bullets"}}'
+							data-zanim-lg='{"animation":"zoom-out","delay":0}'
+							data-zanim-trigger="scroll">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide min-vh-lg-75 py-9">
+									<div
+										class="bg-holder"
+										style="
+											background-image: url(../assets/img/headers/webtoon-1.svg);
+											filter: blur(1px);"
+									></div>
+									<!--/.bg-holder-->
+								</div>
+								<div class="swiper-slide min-vh-lg-75 py-9">
+									<div
+										class="bg-holder"
+										style="
+											background-image: url(../assets/img/headers/webtoon-2.svg);
+											filter: blur(1px);
+										"
+									></div>
+									<!--/.bg-holder-->
+								</div>
+								<div class="swiper-slide min-vh-lg-75 py-9">
+									<div
+										class="bg-holder"
+										style="
+											background-image: url(../assets/img/headers/webtoon-3.svg);
+											filter: blur(1px);
+										"
+									></div>
+									<!--/.bg-holder-->
+								</div>
+							</div>
+							<div class="swiper-pagination"></div>
+							<div class="swiper-nav">
+								<div class="swiper-button-next me-md-3"></div>
+								<div class="swiper-button-prev ms-md-3"></div>
+							</div>
+						</div>
+							<!-- <img
 								class="w-100 rounded"
 								src="../assets/img/creative.jpg"
 								alt=""
 								data-zanim-xs='{"animation":"zoom-out","delay":0.1}'
 								data-zanim-trigger="scroll"
-							/>
+							/> -->
 						</div>
 
 						<div class="col-sm-8 col-lg-4 mt-5 mt-lg-0 ps-lg-3 ps-xl-4">
@@ -892,7 +936,7 @@
 							></div>
 							<!--/.bg-holder-->
 						</div>
-						<div class="row justify-content-center text-center py-7">
+						<div class="row justify-content-center text-center py-7" data-parallax="" data-rellax-percentage="0.5" data-rellax-speed="-3">
 							<div class="col-lg-9 position-relative">
 								<h3 class="fs-7 fs-sm-6 text-white">
 									have a website to build?
@@ -926,10 +970,9 @@
 						</div>
 					</div>
 
-					<section class="py-3" id="LandingFeatures">
+					<section class="py-3" id="our-process">
 						<div class="container-fluid">
-							<div
-								class="row"
+							<div class="row"
 								data-zanim-timeline="{}"
 								data-zanim-trigger="scroll"
 							>
@@ -937,7 +980,7 @@
 									class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
 									data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
 								>
-									<div class="position-relative min-vh-50 h-100">
+									<div class="position-relative min-vh-25 h-100">
 										<div
 											class="bg-holder rounded"
 											style="background-image: url(../assets/img/workout-2.jpg)"
@@ -949,7 +992,7 @@
 									class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
 									data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
 								>
-									<div class="position-relative min-vh-50 h-100">
+									<div class="position-relative min-vh-25 h-100">
 										<div
 											class="bg-holder rounded"
 											style="background-image: url(../assets/img/workout-2.jpg)"
@@ -961,7 +1004,7 @@
 									class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
 									data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
 								>
-									<div class="position-relative min-vh-50 h-100">
+									<div class="position-relative min-vh-25 h-100">
 										<div
 											class="bg-holder rounded"
 											style="background-image: url(../assets/img/workout-2.jpg)"
@@ -973,7 +1016,7 @@
 									class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
 									data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
 								>
-									<div class="position-relative min-vh-50 h-100">
+									<div class="position-relative min-vh-25 h-100">
 										<div
 											class="bg-holder rounded"
 											style="background-image: url(../assets/img/workout-2.jpg)"
@@ -984,6 +1027,61 @@
 							</div>
 
 							<div
+							class="row mt-3"
+							data-zanim-timeline="{}"
+							data-zanim-trigger="scroll"
+						>
+							<div
+								class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
+								data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
+							>
+								<div class="position-relative min-vh-25 h-100">
+									<div
+										class="bg-holder rounded"
+										style="background-image: url(../assets/img/workout-2.jpg)"
+									></div>
+									<!--/.bg-holder-->
+								</div>
+							</div>
+							<div
+								class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
+								data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
+							>
+								<div class="position-relative min-vh-25 h-100">
+									<div
+										class="bg-holder rounded"
+										style="background-image: url(../assets/img/workout-2.jpg)"
+									></div>
+									<!--/.bg-holder-->
+								</div>
+							</div>
+							<div
+								class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
+								data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
+							>
+								<div class="position-relative min-vh-25 h-100">
+									<div
+										class="bg-holder rounded"
+										style="background-image: url(../assets/img/workout-2.jpg)"
+									></div>
+									<!--/.bg-holder-->
+								</div>
+							</div>
+							<div
+								class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
+								data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
+							>
+								<div class="position-relative min-vh-25 h-100">
+									<div
+										class="bg-holder rounded"
+										style="background-image: url(../assets/img/workout-2.jpg)"
+									></div>
+									<!--/.bg-holder-->
+								</div>
+							</div>
+						</div>
+
+							<div
 								class="row mt-3"
 								data-zanim-timeline="{}"
 								data-zanim-trigger="scroll"
@@ -992,7 +1090,7 @@
 									class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
 									data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
 								>
-									<div class="position-relative min-vh-50 h-100">
+									<div class="position-relative min-vh-25 h-100">
 										<div
 											class="bg-holder rounded"
 											style="background-image: url(../assets/img/workout-2.jpg)"
@@ -1004,7 +1102,7 @@
 									class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
 									data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
 								>
-									<div class="position-relative min-vh-50 h-100">
+									<div class="position-relative min-vh-25 h-100">
 										<div
 											class="bg-holder rounded"
 											style="background-image: url(../assets/img/workout-2.jpg)"
@@ -1016,7 +1114,7 @@
 									class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
 									data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
 								>
-									<div class="position-relative min-vh-50 h-100">
+									<div class="position-relative min-vh-25 h-100">
 										<div
 											class="bg-holder rounded"
 											style="background-image: url(../assets/img/workout-2.jpg)"
@@ -1028,7 +1126,7 @@
 									class="col-lg-6 col-xl-3 mt-3 mt-xl-0 px-xl-2 ps-lg-2"
 									data-zanim-xs='{"delay":0.2,"animation":"zoom-in"}'
 								>
-									<div class="position-relative min-vh-50 h-100">
+									<div class="position-relative min-vh-25 h-100">
 										<div
 											class="bg-holder rounded"
 											style="background-image: url(../assets/img/workout-2.jpg)"
@@ -1346,6 +1444,27 @@
 			gtag('config', 'UA-122907869-1');
 		</script>
 		<script src="../assets/js/theme.js"></script>
+		<script>
+			let slideIndex = 0;
+			showSlides();
+			
+			function showSlides() {
+			  let i;
+			  let slides = document.getElementsByClassName("mySlides");
+			  let dots = document.getElementsByClassName("dot");
+			  for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";  
+			  }
+			  slideIndex++;
+			  if (slideIndex > slides.length) {slideIndex = 1}    
+			  for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block";  
+			  dots[slideIndex-1].className += " active";
+			  setTimeout(showSlides, 2000); // Change image every 2 seconds
+			}
+			</script>
 	</body>
 
 	<!-- Mirrored from prium.github.io/twbs-sparrow/v2.3.0/pages/one-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 May 2024 01:32:18 GMT -->
