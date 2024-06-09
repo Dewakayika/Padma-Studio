@@ -23201,7 +23201,7 @@ label {
 /* Logo size for tablets and larger devices */
 @media (min-width: 268px) {
     .fancynavbar-brand-img {  
-        width: 15px; /* Adjust the size as needed */
+        width: 20px; /* Adjust the size as needed */
     }
 }
 
