@@ -476,12 +476,11 @@
 				</div>
 			</div>
 			<!-- ============================================--><!-- End of Preloader ===========================-->
-			
 			<section class="py-0" id="LandingHeader">
 				<div class="floating-video-mobile">
 					<div class="youtube-container">
 						<iframe id="videoMobile"
-							src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1"
+							src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1&autoplay=1"
 							allow="autoplay; encrypted-media"
 							allowfullscreen>
 						</iframe>
@@ -501,7 +500,7 @@
 							<div class="floating-video-desktop">
 								<div class="youtube-container">
 									<iframe id="videoDesktop"
-										src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1"
+										src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1&autoplay=1"
 										allow="autoplay; encrypted-media"
 										allowfullscreen>
 									</iframe>
@@ -538,6 +537,7 @@
 					</div>
 				</div>
 			</section>
+			
 			
 			<!-- <section> close ============================--><!-- ============================================-->
 
@@ -1132,9 +1132,26 @@
 			}
 			</script>
 			<script>
+				var tag = document.createElement('script');
+				tag.src = "https://www.youtube.com/iframe_api";
+				var firstScriptTag = document.getElementsByTagName('script')[0];
+				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			
 				function onYouTubeIframeAPIReady() {
-					const videoMobile = new YT.Player('videoMobile');
-					const videoDesktop = new YT.Player('videoDesktop');
+					const videoMobile = new YT.Player('videoMobile', {
+						events: {
+							'onReady': onPlayerReady
+						}
+					});
+					const videoDesktop = new YT.Player('videoDesktop', {
+						events: {
+							'onReady': onPlayerReady
+						}
+					});
+			
+					function onPlayerReady(event) {
+						playVideo();
+					}
 			
 					function playVideo() {
 						const screenWidth = window.innerWidth;
@@ -1149,14 +1166,11 @@
 					}
 			
 					window.addEventListener('resize', playVideo);
-					playVideo();
 				}
-			
-				var tag = document.createElement('script');
-				tag.src = "https://www.youtube.com/iframe_api";
-				var firstScriptTag = document.getElementsByTagName('script')[0];
-				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 			</script>
+			
+			
+			
 			
 			
 	</body>
