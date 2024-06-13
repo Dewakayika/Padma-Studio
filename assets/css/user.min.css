@@ -149,7 +149,8 @@ button {
 
 @media screen and (min-width: 1200px) {
 	.floating-video-mobile {
-		display: none;	
+		display: none;
+		
 	}
 
 	.swipper-banner-container,
