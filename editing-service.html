@@ -476,41 +476,34 @@
 				</div>
 			</div>
 			<!-- ============================================--><!-- End of Preloader ===========================-->
-
+			
 			<section class="py-0" id="LandingHeader">
 				<div class="floating-video-mobile">
 					<div class="youtube-container">
-						<iframe
-							src="https://www.youtube.com/embed/sRHkMDyrBVY"
+						<iframe id="videoMobile"
+							src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1"
 							allow="autoplay; encrypted-media"
-							allowfullscreen
-						>
+							allowfullscreen>
 						</iframe>
 					</div>
 				</div>
 				<div class="container-fluid">
 					<div class="row" data-zanim-timeline="{}" data-zanim-trigger="scroll">
 						<div class="col-lg-8 px-0 position-relative editing-animation-col">
-							<div
-								class="h-100 py-9 editing-animation-container"
-								data-zanim-lg='{"animation":"slide-right","from":{"opacity":0},"delay":0.4}'
-								data-zanim-trigger="scroll"
-							>
-								<div
-									class="bg-holder"
-									style="background-image: url(assets/img/workout-6.jpg)"
-									data-zanim-trigger="scroll"
-									data-zanim-lg='{"animation":"slide-right","delay":0}'
-								></div>
-								<!--/.bg-holder-->
+							<div class="h-100 py-9 editing-animation-container"
+								 data-zanim-lg='{"animation":"slide-right","from":{"opacity":0},"delay":0.4}'
+								 data-zanim-trigger="scroll">
+								<div class="bg-holder" style="background-image: url(assets/img/workout-6.jpg)"
+									 data-zanim-trigger="scroll"
+									 data-zanim-lg='{"animation":"slide-right","delay":0}'>
+								</div>
 							</div>
 							<div class="floating-video-desktop">
 								<div class="youtube-container">
-									<iframe
-										src="https://www.youtube.com/embed/sRHkMDyrBVY"
+									<iframe id="videoDesktop"
+										src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1"
 										allow="autoplay; encrypted-media"
-										allowfullscreen
-									>
+										allowfullscreen>
 									</iframe>
 								</div>
 							</div>
@@ -519,55 +512,33 @@
 							<div class="row flex-center py-6 py-md-8 video-tittle">
 								<div class="col-11 col-sm-10">
 									<div class="overflow-hidden">
-										<h6
-										class="fw-normal text-white bg-danger p-2 fs-10 rounded d-inline-block text-capitalize"
-										data-zanim-xs='{"delay":0.1}'>
-										Youtube Video Editing
+										<h6 class="fw-normal text-white bg-danger p-2 fs-10 rounded d-inline-block text-capitalize"
+											data-zanim-xs='{"delay":0.1}'>
+											Youtube Video Editing
 										</h6>
-										<h2
-											class="fw-light text-uppercase fs-7 fs-lg-6"
-											data-zanim-lg='{"delay":0.4}'
-										>
-											Turn insight<br />into<span class="fw-black">
-												action</span
-											>
+										<h2 class="fw-light text-uppercase fs-7 fs-lg-6" data-zanim-lg='{"delay":0.4}'>
+											Turn insight<br />into<span class="fw-black"> action</span>
 										</h2>
 									</div>
 									<div class="overflow-hidden">
-										<p
-											class="lead font-secondary mt-4 text-body-tertiary"
-											data-zanim-lg='{"delay":0.5}'
-										>
-											If you're active, sparrow is made<br />for you. Your
-											mobile health<br />trainer and specialist.
+										<p class="lead font-secondary mt-4 text-body-tertiary" data-zanim-lg='{"delay":0.5}'>
+											If you're active, sparrow is made<br />for you. Your mobile health<br />trainer and
+											specialist.
 										</p>
 									</div>
 									<div class="mt-0 mt-sm-5">
-										<a
-											class="btn btn-dark btn-sm me-2 my-2"
-											href="#demoes"
-											data-offset="60"
-											data-zanim-xs='{"delay":1.3}'
-											>Try it for Free</a
-										><a
-											class="btn btn-outline-dark btn-sm my-2"
-											href="#howitwork"
-											data-zanim-xs='{"delay":1.3}'
-											>How it Work &xrarr;</a
-										>
+										<a class="btn btn-dark btn-sm me-2 my-2" href="#demoes" data-offset="60"
+										   data-zanim-xs='{"delay":1.3}'>Try it for Free</a>
+										<a class="btn btn-outline-dark btn-sm my-2" href="#howitwork"
+										   data-zanim-xs='{"delay":1.3}'>How it Work &xrarr;</a>
 									</div>
-									<!-- <div class="overflow-hidden">
-										<div class="mt-3 mt-lg-5" data-zanim-xs='{"delay":0.6}'>
-											<a class="btn btn-outline-dark" href="#!">See Our Works</a>
-										</div>
-									</div> -->
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- end of .container-->
 			</section>
+			
 			<!-- <section> close ============================--><!-- ============================================-->
 
 			<!-- ============================================--><!-- <section> begin ============================-->
@@ -1160,6 +1131,33 @@
 			  captionText.innerHTML = dots[slideIndex-1].alt;
 			}
 			</script>
+			<script>
+				function onYouTubeIframeAPIReady() {
+					const videoMobile = new YT.Player('videoMobile');
+					const videoDesktop = new YT.Player('videoDesktop');
+			
+					function playVideo() {
+						const screenWidth = window.innerWidth;
+			
+						if (screenWidth < 768) { // Mobile
+							videoMobile.playVideo();
+							videoDesktop.stopVideo();
+						} else { // Desktop
+							videoDesktop.playVideo();
+							videoMobile.stopVideo();
+						}
+					}
+			
+					window.addEventListener('resize', playVideo);
+					playVideo();
+				}
+			
+				var tag = document.createElement('script');
+				tag.src = "https://www.youtube.com/iframe_api";
+				var firstScriptTag = document.getElementsByTagName('script')[0];
+				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			</script>
+			
 			
 	</body>
 
