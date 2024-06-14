@@ -730,46 +730,8 @@
 		  gtag('config', 'UA-122907869-1');
 		</script>
 		<script src="../assets/js/theme.js"></script>
-		<script>
-			var tag = document.createElement('script');
-			tag.src = "https://www.youtube.com/iframe_api";
-			var firstScriptTag = document.getElementsByTagName('script')[0];
-			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-		
-			function onYouTubeIframeAPIReady() {
-				const videoMobile = new YT.Player('videoMobile', {
-					events: {
-						'onReady': onPlayerReady
-					}
-				});
-				const videoDesktop = new YT.Player('videoDesktop', {
-					events: {
-						'onReady': onPlayerReady
-					}
-				});
-		
-				function onPlayerReady(event) {
-					playVideo();
-				}
-		
-				function playVideo() {
-					const screenWidth = window.innerWidth;
-		
-					if (screenWidth < 768) { // Mobile
-						videoMobile.playVideo();
-						videoDesktop.stopVideo();
-					} else { // Desktop
-						videoDesktop.playVideo();
-						videoMobile.stopVideo();
-					}
-				}
-		
-				window.addEventListener('resize', playVideo);
-			}
-		</script>
+
 		
 		
 	</body>
-
-	<!-- Mirrored from prium.github.io/twbs-sparrow/v2.3.0/pages/one-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 May 2024 01:32:18 GMT -->
 </html>
