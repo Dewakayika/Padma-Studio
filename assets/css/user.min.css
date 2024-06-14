@@ -1,12 +1,4 @@
-:root {
-	--space-cadet: #1f2041;
-	--sunglow: #ffc857;
-	--dark-cyan: #119da4;
-	--paynes-gray: #d0021b;
-	--light-color: #fff;
-	--muted-color: slategray;
-	--dot-color: #bd757e;
-}
+
 
 button {
 	cursor: pointer;
