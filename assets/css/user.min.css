@@ -175,7 +175,12 @@ button {
 
 /* video editing */
 
-@media (max-width: 911px) {
+@media (max-width: 1200px) {
+	.video-tittle {
+		text-align: center;
+	}
+}
+@media (max-width: 500px) {
 	.video-tittle {
 		text-align: center;
 	}
@@ -347,13 +352,13 @@ button {
 	width: 100%; /* Full width */
 	height: 100%; /* Full height */
 	overflow: auto; /* Enable scroll if needed */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	background-color: rgba(0, 0, 0, 0.792); /* Black w/ opacity */
   }
   
   /* Modal Content/Box */
   .modal-content {
 	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
+	margin: 3% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
@@ -413,6 +418,16 @@ button {
     z-index: 1;
     pointer-events: none; 
 	opacity: 80%;
+  }
+
+  div.scroll-container {
+	overflow: auto;
+	white-space: nowrap;
+	padding: 10px;
+  }
+  
+  div.scroll-container img {
+	padding: 10px;
   }
 
 
