@@ -430,5 +430,23 @@ button {
 	padding: 10px;
   }
 
+  @media screen and (max-width: 600px) {
+	.modal-content{
+		top: 2%;
+		width: 100%;
+	}
+	.div.scroll-container img {
+	  padding: 10px;
+	  height: 200px;
+	}
+  }
+  
+  @media screen and (max-width: 400px) {
+	.div.scroll-container img {
+		padding: 10px;
+		height: 100px;
+	  }
+  }
+
 
 
