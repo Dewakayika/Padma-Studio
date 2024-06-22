@@ -115,7 +115,7 @@
 				<div class="floating-video-mobile">
 					<div class="youtube-container">
 						<iframe id="videoMobile"
-							src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1&autoplay=1"
+							src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1"
 							allow="autoplay; encrypted-media"
 							allowfullscreen>
 						</iframe>
@@ -135,7 +135,7 @@
 							<div class="floating-video-desktop">
 								<div class="youtube-container">
 									<iframe id="videoDesktop"
-										src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1&autoplay=1"
+										src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1"
 										allow="autoplay; encrypted-media"
 										allowfullscreen>
 									</iframe>
@@ -657,8 +657,8 @@
 		<!-- Global site tag (gtag.js) - Google Analytics-->
 		<script
 			async=""
-			src="https://www.googletagmanager.com/gtag/js?id=UA-122907869-1"
-		></script>
+			src="https://www.googletagmanager.com/gtag/js?id=UA-122907869-1">
+		</script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
 
@@ -700,41 +700,51 @@
 			}
 			</script>
 			<script>
-				var tag = document.createElement('script');
-				tag.src = "https://www.youtube.com/iframe_api";
-				var firstScriptTag = document.getElementsByTagName('script')[0];
-				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-			
-				function onYouTubeIframeAPIReady() {
-					const videoMobile = new YT.Player('videoMobile', {
-						events: {
-							'onReady': onPlayerReady
-						}
-					});
-					const videoDesktop = new YT.Player('videoDesktop', {
-						events: {
-							'onReady': onPlayerReady
-						}
-					});
-			
-					function onPlayerReady(event) {
-						playVideo();
+				document.addEventListener('DOMContentLoaded', function () {
+				var videoMobile = document.getElementById('videoMobile');
+				var videoDesktop = document.getElementById('videoDesktop');
+
+				// Function to autoplay video
+				function autoplayVideo(videoElement) {
+					var src = videoElement.src;
+					if (!src.includes("autoplay=1")) {
+						videoElement.src = src + "&autoplay=1";
 					}
-			
-					function playVideo() {
-						const screenWidth = window.innerWidth;
-			
-						if (screenWidth < 768) { // Mobile
-							videoMobile.playVideo();
-							videoDesktop.stopVideo();
-						} else { // Desktop
-							videoDesktop.playVideo();
-							videoMobile.stopVideo();
-						}
-					}
-			
-					window.addEventListener('resize', playVideo);
 				}
+
+				// Function to pause video
+				function pauseVideo(videoElement) {
+					var src = videoElement.src;
+					if (src.includes("&autoplay=1")) {
+						videoElement.src = src.replace("&autoplay=1", "");
+					}
+				}
+
+				// Check screen width and autoplay the appropriate video
+				function handleVideoPlayback() {
+					if (window.innerWidth < 1200) {
+						autoplayVideo(videoMobile);
+						pauseVideo(videoDesktop);
+					} else {
+						autoplayVideo(videoDesktop);
+						pauseVideo(videoMobile);
+					}
+				}
+
+				// Autoplay the correct video on load
+				handleVideoPlayback();
+
+				// Pause video on scroll
+				window.addEventListener('scroll', function () {
+					pauseVideo(videoMobile);
+					pauseVideo(videoDesktop);
+				});
+
+				// Handle window resize to switch videos if necessary
+				window.addEventListener('resize', function () {
+					handleVideoPlayback();
+				});
+				});
 			</script>
 			
 			
