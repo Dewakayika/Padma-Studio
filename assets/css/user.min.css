@@ -169,15 +169,19 @@ button {
 	}
 }
 
-.video-tittle{
-  text-align: left;
-}
-
 /* video editing */
+@media screen and (min-width: 1200px){
+	.video-tittle {
+		text-align: left;
+	}
+}
 
 @media (max-width: 1200px) {
 	.video-tittle {
 		text-align: center;
+		margin: auto;
+		width: 50%;
+		padding: 10px;
 	}
 }
 @media (max-width: 500px) {
@@ -185,7 +189,6 @@ button {
 		text-align: center;
 	}
 }
-
 
 .img-arrow{
 	position: absolute;

@@ -105,7 +105,7 @@
 		<section class="py-0">
 			<div class="floating-video-mobile">
 				<div class="youtube-container">
-					<iframe id="videoMobile" src="https://www.youtube.com/embed/Fhnj5WkDo-o?enablejsapi=1&autoplay=1"
+					<iframe id="videoMobile" src="https://www.youtube.com/embed/Fhnj5WkDo-o?enablejsapi=1"
 						allow="autoplay"></iframe>
 				</div>
 			</div>
@@ -127,7 +127,7 @@
 						<div class="floating-video-desktop">
 							<div class="youtube-container">
 								<iframe id="videoDesktop"
-									src="https://www.youtube.com/embed/Fhnj5WkDo-o?enablejsapi=1&autoplay=1"
+									src="https://www.youtube.com/embed/Fhnj5WkDo-o?enablejsapi=1"
 									allow="autoplay; encrypted-media" allowfullscreen>
 								</iframe>
 							</div>
@@ -135,7 +135,7 @@
 					</div>
 					<div class="col-lg-4 bg-body py-7 py-md-2 video-tittle">
 						<div class="row flex-center h-100">
-							<div class="col-lg-10 text-black text-center text-lg-start" data-zanim-timeline="{}"
+							<div class="col-lg-10 text-black " data-zanim-timeline="{}"
 								data-zanim-trigger="scroll">
 								<div class="overflow-hidden">
 									<h6 class="fw-normal text-white bg-danger p-2 fs-10 rounded d-inline-block text-capitalize"
@@ -157,9 +157,7 @@
 								<div class="mt-0 mt-sm-5">
 									<a class="btn btn-dark btn-sm my-2" href="#howitwork"
 										data-zanim-xs='{"delay":1.3}'>How it Work </a>
-
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -527,14 +525,7 @@
 													<img src="https://lh3.googleusercontent.com/drive-viewer/AKGpihakOXZgNFA19jDZs9FkAhwCTZL6d9omKLR7nGnXG5DqqXnV3FtbVOmKZpABkz01_9iOGfUBEP9FINibwWa2xN5bcm8PvBGDgJs=s1600-rw-v1" alt="Cinque Terre" width="auto" height="400">
 													<img src="https://lh3.googleusercontent.com/drive-viewer/AKGpihaKMXcVQNjZkI_Fggcyb9kCjDhcsNvpqXeGffoPdMoaUhJyGRbMs4icUmGrvq8-Y7WElUL10S11rktqe07A1Of_0Z8REAb57bI=s1600-rw-v1" alt="Cinque Terre" width="auto" height="400">
 													<img src="https://lh3.googleusercontent.com/drive-viewer/AKGpihY7QSpfSwSyC4ilgLqieLuxeVFeR8rOULxbOZp9wKr2nsAImcl-Vkmux3HcNeMm1LaHLGbrqXdzGFURUSoIlKwqiTy5bxxQuVc=s1600-rw-v1" alt="Cinque Terre" width="auto" height="400">
-													
-													
 												</div>
-
-
-
-
-
 											</div>
 										</article>
 
@@ -941,41 +932,36 @@
 	</script>
 	<script src="assets/js/theme.js"></script>
 	<script>
-		var tag = document.createElement('script');
-		tag.src = "https://www.youtube.com/iframe_api";
-		var firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		document.addEventListener('DOMContentLoaded', function () {
+        var videoMobile = document.getElementById('videoMobile');
+        var videoDesktop = document.getElementById('videoDesktop');
 
-		function onYouTubeIframeAPIReady() {
-			const videoMobile = new YT.Player('videoMobile', {
-				events: {
-					'onReady': onPlayerReady
-				}
-			});
-			const videoDesktop = new YT.Player('videoDesktop', {
-				events: {
-					'onReady': onPlayerReady
-				}
-			});
+        // Function to autoplay video
+        function autoplayVideo(videoElement) {
+            var src = videoElement.src;
+            if (!src.includes("autoplay=1")) {
+                videoElement.src = src + "&autoplay=1";
+            }
+        }
 
-			function onPlayerReady(event) {
-				playVideo();
-			}
+        // Function to pause video
+        function pauseVideo(videoElement) {
+            var src = videoElement.src;
+            if (src.includes("&autoplay=1")) {
+                videoElement.src = src.replace("&autoplay=1", "");
+            }
+        }
 
-			function playVideo() {
-				const screenWidth = window.innerWidth;
+        // Autoplay video on load
+        autoplayVideo(videoMobile);
+        autoplayVideo(videoDesktop);
 
-				if (screenWidth < 768) { // Mobile
-					videoMobile.playVideo();
-					videoDesktop.stopVideo();
-				} else { // Desktop
-					videoDesktop.playVideo();
-					videoMobile.stopVideo();
-				}
-			}
-
-			window.addEventListener('resize', playVideo);
-		}
+        // Pause video on scroll
+        window.addEventListener('scroll', function () {
+            pauseVideo(videoMobile);
+            pauseVideo(videoDesktop);
+        });
+    });
 	</script>
 	<script>
 		// Get all the buttons
