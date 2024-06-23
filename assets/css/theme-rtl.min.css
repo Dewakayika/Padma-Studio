@@ -7235,12 +7235,12 @@ fieldset:disabled .btn {
     --sparrow-backdrop-bg: var(--sparrow-dark);
     --sparrow-backdrop-opacity: 0.9;
     position: fixed;
+    z-index: 3;
     top: 0;
     right: 0;
-    z-index: var(--sparrow-backdrop-zindex);
     width: 100vw;
     height: 100vh;
-    background-color: var(--sparrow-backdrop-bg)
+    display: none;
 }
 
 .modal-backdrop.fade {
@@ -7248,7 +7248,9 @@ fieldset:disabled .btn {
 }
 
 .modal-backdrop.show {
+    display: none;
     opacity: var(--sparrow-backdrop-opacity)
+    
 }
 
 .modal-header {

@@ -493,6 +493,32 @@ button {
   }
 
 
+/* pop up modal */
+.modal-content {
+    background-color: #f0f0f0; /* Warna latar belakang */
+}
+
+.modal-title {
+    color: #333; /* Warna judul */
+}
+
+.modal-body {
+    color: #555; /* Warna teks isi */
+}
+
+.modal-footer {
+    justify-content: center; /* Pusatkan tombol tutup */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Warna tombol tutup */
+    color: #fff; /* Warna teks tombol tutup */
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Warna latar belakang saat dihover */
+}
+
 
 
 

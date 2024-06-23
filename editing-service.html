@@ -91,6 +91,10 @@
 			<li class="fancynav-item"><a class="fancynav-link" href="social-media.html"><span
 				  class="fancynav-link-content">Community</span></a>
 			</li>
+			<li class="fancynav-item">
+				<a class="fancynav-link" href="contact-us.html">
+					<span class="fancynav-link-content">Contact Us</span></a>
+			</li>
 		  </ul>
 		</div>
 	  </nav>
@@ -699,15 +703,12 @@
 				var videoMobile = document.getElementById('videoMobile');
 				var videoDesktop = document.getElementById('videoDesktop');
 				var landingHeader = document.getElementById('LandingHeader');
+				var navTag = document.querySelector('nav');
 				var isMobile = window.innerWidth < 1200;
 				var currentVideo = isMobile ? videoMobile : videoDesktop;
 
 				// Function to autoplay video
 				function autoplayVideo(videoElement) {
-					var src = videoElement.src;
-					if (!src.includes("autoplay=1")) {
-						videoElement.src = src + "&autoplay=1";
-					}
 					videoElement.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 				}
 
@@ -731,7 +732,7 @@
 				function handleVideoPlayback() {
 					isMobile = window.innerWidth < 1200;
 					currentVideo = isMobile ? videoMobile : videoDesktop;
-					if (isElementInViewport(landingHeader)) {
+					if (isElementInViewport(landingHeader) || isElementInViewport(navTag)) {
 						autoplayVideo(currentVideo);
 					} else {
 						pauseVideo(currentVideo);
@@ -745,7 +746,12 @@
 				window.addEventListener('scroll', function () {
 					handleVideoPlayback();
 				});
+
+				// Handle window resize to switch videos if necessary
+				window.addEventListener('resize', function () {
+					handleVideoPlayback();
 				});
+			});
 			</script>
 			
 			
