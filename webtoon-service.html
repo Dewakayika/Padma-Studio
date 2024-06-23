@@ -470,7 +470,7 @@
 								</div>
 								<div id="myModal1" class="modal">
 									<div class="modal-content">
-										<span class="close">&times;</span>
+										
 										<article class="blog-post">
 											<h1 class="blog-title">Furawashi</h1>
 											<p class="blog-meta">Project by ViviOn Japan</p>
@@ -514,6 +514,7 @@
 												</div>
 											</div>
 										</article>
+										<span class="close">&times;</span>
 
 									</div>
 								</div>
@@ -535,7 +536,7 @@
 								</div>
 								<div id="myModal2" class="modal">
 									<div class="modal-content">
-										<span class="close">&times;</span>
+										
 										<article class="blog-post">
 											<h1 class="blog-title">Keiken Ninz</h1>
 											<p class="blog-meta">Project by ViviOn Japan</p>
@@ -582,6 +583,7 @@
 
 											</div>
 										</article>
+										<span class="close">&times;</span>
 									</div>
 								</div>
 							</div>
@@ -603,7 +605,7 @@
 								</div>
 								<div id="myModal3" class="modal">
 									<div class="modal-content">
-										<span class="close">&times;</span>
+										
 										<article class="blog-post">
 											<h1 class="blog-title">Assassin is Working in Office</h1>
 											<p class="blog-meta">Project by ViviOn Japan</p>
@@ -651,6 +653,7 @@
 												</div>
 											</div>
 										</article>
+										<span class="close">&times;</span>
 									</div>
 								</div>
 							</div>
@@ -670,7 +673,7 @@
 								</div>
 								<div id="myModal3" class="modal">
 									<div class="modal-content">
-										<span class="close">&times;</span>
+										
 										<article class="blog-post">
 											<h1 class="blog-title">Tasogare</h1>
 											<p class="blog-meta">Project by ViviOn Japan</p>
@@ -710,6 +713,7 @@
 												  </div>
 											</div>
 										</article>
+										<span class="close">&times;</span>
 
 									</div>
 								</div>
@@ -730,7 +734,7 @@
 								</div>
 								<div id="myModal3" class="modal">
 									<div class="modal-content">
-										<span class="close">&times;</span>
+										
 										<article class="blog-post">
 											<h1 class="blog-title">Lucky Dog</h1>
 											<p class="blog-meta">Project by ViviOn Japan</p>
@@ -768,6 +772,7 @@
 												
 											</div>
 										</article>
+										<span class="close">&times;</span>
 									</div>
 								</div>
 							</div>
@@ -790,7 +795,7 @@
 								</div>
 								<div id="myModal3" class="modal">
 									<div class="modal-content">
-										<span class="close">&times;</span>
+										
 										<article class="blog-post">
 											<h1 class="blog-title">Magical Kiss</h1>
 											<p class="blog-meta">Project by ViviOn Japan</p>
@@ -829,6 +834,7 @@
 												  </div>
 											</div>
 										</article>
+										<span class="close">&times;</span>
 									</div>
 								</div>
 							</div>
@@ -917,53 +923,59 @@
 		gtag('config', 'UA-122907869-1');
 	</script>
 	<script src="assets/js/theme.js"></script>
-		<script>
-		document.addEventListener('DOMContentLoaded', function () {
-        var videoMobile = document.getElementById('videoMobile');
-        var videoDesktop = document.getElementById('videoDesktop');
+	<script>
+				document.addEventListener('DOMContentLoaded', function () {
+				var videoMobile = document.getElementById('videoMobile');
+				var videoDesktop = document.getElementById('videoDesktop');
+				var landingHeader = document.getElementById('LandingHeader');
+				var isMobile = window.innerWidth < 1200;
+				var currentVideo = isMobile ? videoMobile : videoDesktop;
 
-        // Function to autoplay video
-        function autoplayVideo(videoElement) {
-            var src = videoElement.src;
-            if (!src.includes("autoplay=1")) {
-                videoElement.src = src + "&autoplay=1";
-            }
-        }
+				// Function to autoplay video
+				function autoplayVideo(videoElement) {
+					var src = videoElement.src;
+					if (!src.includes("autoplay=1")) {
+						videoElement.src = src + "&autoplay=1";
+					}
+					videoElement.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+				}
 
-        // Function to pause video
-        function pauseVideo(videoElement) {
-            var src = videoElement.src;
-            if (src.includes("&autoplay=1")) {
-                videoElement.src = src.replace("&autoplay=1", "");
-            }
-        }
+				// Function to pause video
+				function pauseVideo(videoElement) {
+					videoElement.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+				}
 
-        // Check screen width and autoplay the appropriate video
-        function handleVideoPlayback() {
-            if (window.innerWidth < 1200) {
-                autoplayVideo(videoMobile);
-                pauseVideo(videoDesktop);
-            } else {
-                autoplayVideo(videoDesktop);
-                pauseVideo(videoMobile);
-            }
-        }
+				// Function to check if element is in viewport
+				function isElementInViewport(el) {
+					var rect = el.getBoundingClientRect();
+					return (
+						rect.top >= 0 &&
+						rect.left >= 0 &&
+						rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+						rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+					);
+				}
 
-        // Autoplay the correct video on load
-        handleVideoPlayback();
+				// Function to handle video playback based on screen size
+				function handleVideoPlayback() {
+					isMobile = window.innerWidth < 1200;
+					currentVideo = isMobile ? videoMobile : videoDesktop;
+					if (isElementInViewport(landingHeader)) {
+						autoplayVideo(currentVideo);
+					} else {
+						pauseVideo(currentVideo);
+					}
+				}
 
-        // Pause video on scroll
-        window.addEventListener('scroll', function () {
-            pauseVideo(videoMobile);
-            pauseVideo(videoDesktop);
-        });
+				// Handle initial load
+				handleVideoPlayback();
 
-        // Handle window resize to switch videos if necessary
-        window.addEventListener('resize', function () {
-            handleVideoPlayback();
-        });
-    	});
-		</script>
+				// Handle scroll event
+				window.addEventListener('scroll', function () {
+					handleVideoPlayback();
+				});
+				});
+	</script>
 	<script>
 		// Get all the buttons
 		var buttons = document.querySelectorAll('[id^="myBtn"]');
