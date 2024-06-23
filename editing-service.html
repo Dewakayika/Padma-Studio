@@ -67,8 +67,7 @@
 			</svg></div>
 		  <div class="fancynavbar-addon fancynavbar-addon-height"
 			data-zanim-lg='{"from":{"opacity":1,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}'
-			data-zanim-trigger="scroll"><a class="fancynavbar-addon-item" href="#!"><span
-				class="fab fa-twitter"></span></a><a class="fancynavbar-addon-item" href="#languageModal"
+			data-zanim-trigger="scroll"><a class="fancynavbar-addon-item" href="#languageModal"
 			  data-bs-toggle="modal"><span class="font-secondary ls fw-black fs-10 d-block">EN</span></a></div>
 		</div>
 		<div class="fancynavbar-collapse">
@@ -115,7 +114,7 @@
 				<div class="floating-video-mobile">
 					<div class="youtube-container">
 						<iframe id="videoMobile"
-							src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1"
+							src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1&autoplay=1"
 							allow="autoplay; encrypted-media"
 							allowfullscreen>
 						</iframe>
@@ -135,7 +134,7 @@
 							<div class="floating-video-desktop">
 								<div class="youtube-container">
 									<iframe id="videoDesktop"
-										src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1"
+										src="https://www.youtube.com/embed/sRHkMDyrBVY?enablejsapi=1&autoplay=1"
 										allow="autoplay; encrypted-media"
 										allowfullscreen>
 									</iframe>
@@ -699,6 +698,9 @@
 				document.addEventListener('DOMContentLoaded', function () {
 				var videoMobile = document.getElementById('videoMobile');
 				var videoDesktop = document.getElementById('videoDesktop');
+				var landingHeader = document.getElementById('LandingHeader');
+				var isMobile = window.innerWidth < 1200;
+				var currentVideo = isMobile ? videoMobile : videoDesktop;
 
 				// Function to autoplay video
 				function autoplayVideo(videoElement) {
@@ -706,38 +708,41 @@
 					if (!src.includes("autoplay=1")) {
 						videoElement.src = src + "&autoplay=1";
 					}
+					videoElement.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
 				}
 
 				// Function to pause video
 				function pauseVideo(videoElement) {
-					var src = videoElement.src;
-					if (src.includes("&autoplay=1")) {
-						videoElement.src = src.replace("&autoplay=1", "");
-					}
+					videoElement.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
 				}
 
-				// Check screen width and autoplay the appropriate video
+				// Function to check if element is in viewport
+				function isElementInViewport(el) {
+					var rect = el.getBoundingClientRect();
+					return (
+						rect.top >= 0 &&
+						rect.left >= 0 &&
+						rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+						rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+					);
+				}
+
+				// Function to handle video playback based on screen size
 				function handleVideoPlayback() {
-					if (window.innerWidth < 1200) {
-						autoplayVideo(videoMobile);
-						pauseVideo(videoDesktop);
+					isMobile = window.innerWidth < 1200;
+					currentVideo = isMobile ? videoMobile : videoDesktop;
+					if (isElementInViewport(landingHeader)) {
+						autoplayVideo(currentVideo);
 					} else {
-						autoplayVideo(videoDesktop);
-						pauseVideo(videoMobile);
+						pauseVideo(currentVideo);
 					}
 				}
 
-				// Autoplay the correct video on load
+				// Handle initial load
 				handleVideoPlayback();
 
-				// Pause video on scroll
+				// Handle scroll event
 				window.addEventListener('scroll', function () {
-					pauseVideo(videoMobile);
-					pauseVideo(videoDesktop);
-				});
-
-				// Handle window resize to switch videos if necessary
-				window.addEventListener('resize', function () {
 					handleVideoPlayback();
 				});
 				});
