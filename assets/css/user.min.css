@@ -520,5 +520,29 @@ button {
 }
 
 
+/* porfolio editing */
+
+@media screen and (min-width: 900px) {
+	.portfolio-mobile {
+		display: none;
+		
+	  }
+	.portfolio-mobile iframe{
+		width: 90%;
+    	height: 250px;
+	}
+
+  }
+
+  @media screen and (max-width: 900px) {
+	.portfolio-desktop {
+		display: none;
+	  }
+
+  }
+
+
+
+
 
 
