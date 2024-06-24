@@ -542,7 +542,27 @@ button {
   }
 
 
+  /* Card Services */
 
 
+  /* Add the following CSS to your stylesheet */
+
+.card-container {
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-container:hover {
+    transform: scale(1.05);
+}
+
+
+.card-text-container {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.card-container:hover .card-text-container {
+    background-color: #555;
+}
 
 

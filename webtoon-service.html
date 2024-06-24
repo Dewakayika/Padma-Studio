@@ -123,7 +123,7 @@
 							</div>
 							<div class="floating-video-desktop">
 								<div class="youtube-container">
-									<iframe id="videoDesktop" src="https://www.youtube.com/embed/Fhnj5WkDo-o?enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+									<iframe id="videoDesktop" src="https://www.youtube.com/embed/Fhnj5WkDo-o?enablejsapi=1" allow="autoplay"></iframe>
 								</div>
 							</div>
 						</div>
@@ -932,68 +932,70 @@
 	<script src="vendors/gsap/customEase.js"></script>
 	<script src="vendors/gsap/drawSVGPlugin.js"></script><!-- Global site tag (gtag.js) - Google Analytics-->
 	<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-122907869-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'UA-122907869-1');
-	</script>
 	<script src="assets/js/theme.js"></script>
 	<script>
-				document.addEventListener('DOMContentLoaded', function () {
-				var videoMobile = document.getElementById('videoMobile');
-				var videoDesktop = document.getElementById('videoDesktop');
-				var landingHeader = document.getElementById('LandingHeader');
-				var isMobile = window.innerWidth < 1200;
-				var currentVideo = isMobile ? videoMobile : videoDesktop;
+		document.addEventListener('DOMContentLoaded', function () {
+            var videoMobile = document.getElementById('videoMobile');
+            var videoDesktop = document.getElementById('videoDesktop');
+            var landingHeader = document.getElementById('LandingHeader');
+            var isMobile = window.innerWidth < 1200;
+            var currentVideo = isMobile ? videoMobile : videoDesktop;
 
-				// Function to autoplay video
-				function autoplayVideo(videoElement) {
-					var src = videoElement.src;
-					if (!src.includes("autoplay=1")) {
-						videoElement.src = src + "&autoplay=1";
-					}
-					videoElement.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-				}
+            // Function to play video using YouTube API
+            function playVideo(videoElement) {
+                videoElement.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            }
 
-				// Function to pause video
-				function pauseVideo(videoElement) {
-					videoElement.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-				}
+            // Function to pause video using YouTube API
+            function pauseVideo(videoElement) {
+                videoElement.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            }
 
-				// Function to check if element is in viewport
-				function isElementInViewport(el) {
-					var rect = el.getBoundingClientRect();
-					return (
-						rect.top >= 0 &&
-						rect.left >= 0 &&
-						rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-						rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-					);
-				}
+            // Function to check if element is in viewport
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
 
-				// Function to handle video playback based on screen size
-				function handleVideoPlayback() {
-					isMobile = window.innerWidth < 1200;
-					currentVideo = isMobile ? videoMobile : videoDesktop;
-					if (isElementInViewport(landingHeader)) {
-						autoplayVideo(currentVideo);
-					} else {
-						pauseVideo(currentVideo);
-					}
-				}
+            // Function to handle video playback based on screen size and visibility
+            function handleVideoPlayback() {
+                isMobile = window.innerWidth < 1200;
+                currentVideo = isMobile ? videoMobile : videoDesktop;
+                if (isElementInViewport(landingHeader)) {
+                    playVideo(currentVideo);
+                } else {
+                    pauseVideo(currentVideo);
+                }
+            }
 
-				// Handle initial load
-				handleVideoPlayback();
+            // Load and play the appropriate video initially
+            function initializeVideoPlayback() {
+                if (isMobile) {
+                    playVideo(videoMobile);
+                } else {
+                    playVideo(videoDesktop);
+                }
+            }
 
-				// Handle scroll event
-				window.addEventListener('scroll', function () {
-					handleVideoPlayback();
-				});
-				});
+            // Handle initial load
+            initializeVideoPlayback();
+
+            // Handle scroll event to pause or play video
+            window.addEventListener('scroll', function () {
+                handleVideoPlayback();
+            });
+
+            // Handle window resize to switch videos if necessary
+            window.addEventListener('resize', function () {
+                handleVideoPlayback();
+            });
+        });
+
 	</script>
 	<script>
 		// Get all the buttons
