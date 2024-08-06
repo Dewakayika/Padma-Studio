@@ -464,6 +464,12 @@ button {
   div.scroll-container img {
 	padding: 10px;
   }
+  
+
+  .scroll-content {
+    display: inline-block;
+    white-space: nowrap;
+}
 
   @media screen and (max-width: 600px) {
 	.modal-content{
@@ -566,5 +572,10 @@ button {
 .card-container:hover .card-text-container {
     background-color: #555;
 }
+
+
+
+
+
 
 
